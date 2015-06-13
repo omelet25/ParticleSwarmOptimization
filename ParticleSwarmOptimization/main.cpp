@@ -7,9 +7,10 @@
 #include "Alias.h"
 
 #include "StandardPSO.h"
+#include "QuantumPSO.h"
 
 int main(void){
-	PSO::StandardPSO pso = PSO::StandardPSO(
+	PSO::QuantumPSO pso = PSO::QuantumPSO(
 		CostFunction([](dvec& x)->double
 	{
 		double sum = 0;

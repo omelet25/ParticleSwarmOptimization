@@ -30,32 +30,38 @@ void PSO::BasePSO::initialize()
 			_particles[i].v[j] = uniform(-_func.get_euclid() / 2.0, _func.get_euclid() / 2.0);
 		}
 		_particles[i].pbest_f = _particles[i].f = _func.get_cost(_particles[i].x);
-		evaluate(_particles[i]);
 	}
 }
 
 void PSO::BasePSO::Start()
 {
 	initialize();
-	results.push_back({ 0, _gbest_x, _gbest_f });
-	std::cout << 0 << "\t" << results[0].gbest_f << std::endl;
-	for (int t = 1; t < _itr; t++)
+	int t = 0;
+	while (true)
 	{
-		update();
+		evaluate();
 		results.push_back({ t, _gbest_x, _gbest_f });
 		std::cout << t << "\t" << results[t].gbest_f << std::endl;
+		if (++t >= _itr) { break; }
+		update();
 	}
 }
 
-bool PSO::BasePSO::evaluate(Particle& p)
+void PSO::BasePSO::evaluate()
 {
-	if (p.pbest_f < _gbest_f)
+	for (int i = 0; i < _pop; i++)
 	{
-		_gbest_f = p.pbest_f;
-		_gbest_x = p.pbest_x;
-		return true;
+		// —±Žq•]‰¿
+		if (_particles[i].evaluate())
+		{
+			// —±ŽqŒQ•]‰¿
+			if (_particles[i].pbest_f < _gbest_f)
+			{
+				_gbest_f = _particles[i].pbest_f;
+				_gbest_x = _particles[i].pbest_x;
+			}
+		}
 	}
-	return false;
 }
 
 double PSO::BasePSO::uniform(double min, double max)

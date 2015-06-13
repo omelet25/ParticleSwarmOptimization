@@ -24,7 +24,7 @@ namespace PSO
 		*	粒子位置を，\f$x^{t+1} = x^t + v^{t+1}\f$
 		*	で更新する．
 		*/
-		bool update();
+		void update();
 	public:
 		StandardPSO(CostFunction func, int itr = 1, int pop = 1);
 		~StandardPSO();

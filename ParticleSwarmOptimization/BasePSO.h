@@ -52,12 +52,12 @@ namespace PSO
 		*	@brief PSOの更新（仮想関数）
 		*	PSOの種類によってサブクラスでオーバーライドする．
 		*/
-		virtual bool update() = 0;
+		virtual void update() = 0;
 		/**
 		*	@brief 粒子の評価
-		*	粒子の評価を行い，gbestを求める．
+		*	粒子の評価を行い，pbest，gbestを求める．
 		*/
-		virtual bool evaluate(Particle& p);
+		virtual void evaluate();
 
 		/**
 		*	@brief 一様乱数[min,max)の生成
