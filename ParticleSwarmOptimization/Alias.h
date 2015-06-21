@@ -9,7 +9,7 @@
 */
 
 /**
-*	@typedef std::vector < double >型のエイリアス
+*	@typedef std::vector<double>型のエイリアス
 */
 using dvec = std::vector < double > ;
 /**

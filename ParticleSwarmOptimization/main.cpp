@@ -8,9 +8,10 @@
 
 #include "StandardPSO.h"
 #include "QuantumPSO.h"
+#include "QuantumPotential.h"
 
 int main(void){
-	PSO::QuantumPSO pso = PSO::QuantumPSO(
+	PSO::QuantumPSO<PSO::DeltaWell> pso = PSO::QuantumPSO<PSO::DeltaWell>(
 		CostFunction([](dvec& x)->double
 	{
 		double sum = 0;
